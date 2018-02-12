@@ -1,4 +1,6 @@
+// ---------------------------------------------------
 // GLOBAL CONSTANTS & VARIABLES
+// ---------------------------------------------------
 const wordBank = [
     "aladdin", "alice", "ariel", "aurora", "baloo", "bambi", "belle", "bert", "cinderella", "cruella", "dumbo", "esmeralda", "gaston", "genie", "jafar", "lumiere", "mulan", "pocahontas", "pinocchio", "scar", "sebastian", "tarzan", "timon", "quasimodo", "woody", "ursula"
 ]
@@ -7,7 +9,11 @@ const validGuesses = [
     "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
 ]
 
+// ---------------------------------------------------
 // FUNCTIONS
+// ---------------------------------------------------
+
+// Start a new round
 function newRound() {
     scoreboard.answerWord = pickNewWord();
     scoreboard.currentWord = writeBlanks(scoreboard.answerWord);
@@ -16,11 +22,13 @@ function newRound() {
     updatePage();
 }
 
+//      Pick a random word from word bank with each new round
 function pickNewWord() {
     var randomIndex = Math.floor(Math.random() * wordBank.length);
     return wordBank[randomIndex];
 }
 
+//      Make appropriate number of blanks with each new round
 function writeBlanks(word) {
     var blanks = ""
     for (var i = 0; i < word.length; i++) {
@@ -29,13 +37,42 @@ function writeBlanks(word) {
     return blanks;
 }
 
+// Take guess and modify scoreboard
 function processGuess(guess) {
-    if (answerWord.includes(guess)) {
-
+    var answer = scoreboard.answerWord;
+    if (answer.includes(guess)) {
+        var count = getCount(guess, answer);
+        scoreboard.currentWord = updateWord(guess, count, answer);
+    } else {
+        scoreboard.wrongGuesses += guess.toUpperCase() + "   ";
+        scoreboard.guessesLeft--;
     }
-
 }
 
+//      Count how many times guessed letter is in answer
+function getCount(guess, answer) {
+    var count = 0;
+    var pos = answer.indexOf(guess);
+    while (pos !== -1) {
+        count++;
+        pos = answer.indexOf(guess, pos + 1);
+    }
+    return count;
+}
+
+//      Replace blanks with correct guess, looping if there's more than one occurrence
+function updateWord(guess, count, answer) {
+    var fromIndex = 0;
+    var newWord = scoreboard.currentWord;
+    for (var i = 0; i < count; i++) {
+        var pos = answer.indexOf(guess, fromIndex);
+        newWord = newWord.slice(0, pos * 3) + guess.toUpperCase() + "  " + newWord.slice(pos * 3 + 3, newWord.length);
+        fromIndex += pos + 1;
+    }
+    return newWord;
+}
+
+// Update page with new stats
 function updatePage() {
     document.querySelector("#word-text").innerHTML = scoreboard.currentWord;
     document.querySelector("#wrong-guesses-text").innerHTML = scoreboard.wrongGuesses;
@@ -45,7 +82,7 @@ function updatePage() {
     logScoreboard(); // test
 }
 
-
+//      Console log the current game stats
 function logScoreboard() {
     console.log("----- CURRENT GAME ------")
     for (var i in scoreboard) {
@@ -56,30 +93,54 @@ function logScoreboard() {
     console.log("-------------------------")
 }
 
+// Check whether game has entered win or loss condition
+function checkWinLoss() {
+    if (scoreboard.guessesLeft <= 0) {
+        scoreboard.lose();
+        alert("Sorry, you lose. Try again!");
+        newRound();
+    } else if (!scoreboard.currentWord.includes("_")) {
+        scoreboard.win();
+        alert("Yay, you won!");
+        newRound();
+    }
+}
+
+// ---------------------------------------------------
 // OBJECTS
+// ---------------------------------------------------
+
 var scoreboard = {
     currentWord: "",
     wrongGuesses: "",
     guessesLeft: 9,
     wins: 0,
     losses: 0,
-    answerWord: ""
+    answerWord: "",
+    win: function() { this.wins++ },
+    lose: function() { this.losses++ },
 }
 
 
+// ---------------------------------------------------
 // CALLS
-alert("i'm working"); //test
-newRound();
+// ---------------------------------------------------
 
+newRound();
 document.addEventListener("keyup", function(event) {
     var userGuess = event.key.toLowerCase();
     console.log("Key Pressed: " + userGuess);
     if (validGuesses.includes(userGuess)) {
         processGuess(userGuess);
-        updatePage(scoreboard);
+        updatePage();
+        checkWinLoss();
     }
 })
 
-// FEATURES TO ADD LATER
+
+
+// ---------------------------------------------------
+// ADD THESE LATER
+// ---------------------------------------------------
 // Songs
 // Names with spaces
