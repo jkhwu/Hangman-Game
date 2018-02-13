@@ -75,6 +75,7 @@ function updateWord(guess, count, answer) {
 
 // Update page with new stats
 function updatePage() {
+    console.log("update page was called");
     document.querySelector("#word-text").innerHTML = scoreboard.currentWord;
     document.querySelector("#wrong-guesses-text").innerHTML = scoreboard.wrongGuesses;
     document.querySelector("#guesses-left-text").innerHTML = scoreboard.guessesLeft;
@@ -82,6 +83,7 @@ function updatePage() {
     document.querySelector("#loss-counter-text").innerHTML = scoreboard.losses;
     removeAlert()
     logScoreboard(); // test
+    console.log("update page finished");
 }
 
 //      Console log the current game stats
@@ -97,6 +99,7 @@ function logScoreboard() {
 
 // Check whether game has entered win or loss condition
 function checkWinLoss() {
+    console.log("checkWinLoss was called");
     if (scoreboard.guessesLeft <= 0) {
         scoreboard.lose();
         displayResult(false);
@@ -106,6 +109,7 @@ function checkWinLoss() {
         displayResult(true);
         setTimeout(newRound, waitLength);
     }
+
 }
 
 function removeAlert() {
