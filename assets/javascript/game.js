@@ -9,6 +9,7 @@ const validGuesses = [
     "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
 ]
 
+const waitLength = 2000;
 // ---------------------------------------------------
 // FUNCTIONS
 // ---------------------------------------------------
@@ -79,6 +80,7 @@ function updatePage() {
     document.querySelector("#guesses-left-text").innerHTML = scoreboard.guessesLeft;
     document.querySelector("#win-counter-text").innerHTML = scoreboard.wins;
     document.querySelector("#loss-counter-text").innerHTML = scoreboard.losses;
+    removeAlert()
     logScoreboard(); // test
 }
 
@@ -97,13 +99,30 @@ function logScoreboard() {
 function checkWinLoss() {
     if (scoreboard.guessesLeft <= 0) {
         scoreboard.lose();
-        alert("Sorry, you lose. Try again!");
-        newRound();
+        displayResult(false);
+        setTimeout(newRound, waitLength);
     } else if (!scoreboard.currentWord.includes("_")) {
         scoreboard.win();
-        alert("Yay, you won!");
-        newRound();
+        displayResult(true);
+        setTimeout(newRound, waitLength);
     }
+}
+
+function removeAlert() {
+    var alert = document.getElementsByClassName("alert")[0]
+    if (alert) alert.remove()
+}
+
+function displayResult(won) {
+    var newDiv = document.createElement("div");
+    if (won) {
+        newDiv.innerHTML = "Yay, you won!";
+        newDiv.setAttribute("class", "alert alert-success");
+    } else {
+        newDiv.innerHTML = "Sorry, you lose. Try again!";
+        newDiv.setAttribute("class", "alert alert-danger");
+    }
+    document.getElementsByClassName("container")[0].appendChild(newDiv);
 }
 
 // ---------------------------------------------------
