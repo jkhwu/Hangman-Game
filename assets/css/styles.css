@@ -1,0 +1,44 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+pre {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+    font-size: 1.75rem;
+    margin-top: 0;
+    margin-bottom: .5rem;
+}
+
+body {
+    background: #0575E6;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #021B79, #0575E6);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #021B79, #0575E6);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.jumbotron {
+    margin-top: 50px;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 100px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+h4 {
+    font-size: 14px;
+}
