@@ -22,23 +22,43 @@ body {
 }
 
 .jumbotron {
-    margin-top: 50px;
+    text-align: center;
+    padding: 5px;
+}
+
+#logo {
+    height: 150px;
+}
+
+.card-body {
     text-align: center;
 }
 
 h1 {
     font-family: 'UnifrakturMaguntia', cursive;
-    font-size: 100px;
-}
-
-h2 {
-    font-size: 20px;
+    font-size: 40px;
+    line-height: .5em;
+    margin-top: .3em;
+    margin-bottom: .3em;
 }
 
 h3 {
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+#word-text {
+    font-weight: bold;
+    color: #0575E6;
 }
 
 h4 {
-    font-size: 14px;
+    font-size: 16px;
+}
+
+#wrong-guesses-text,
+#guesses-left-text {
+    color: rgb(255, 98, 0);
+    font-size: 25px;
+    font-weight: bold;
 }

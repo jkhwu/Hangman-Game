@@ -35,7 +35,7 @@ const validGuesses = [
     "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
 ]
 
-const waitLength = 2000;
+const waitLength = 4000;
 
 // ---------------------------------------------------
 // FUNCTIONS
@@ -72,9 +72,13 @@ function processGuess(guess) {
     if (answer.includes(guess)) {
         var count = getCount(guess, answer);
         scoreboard.currentWord = updateWord(guess, count, answer);
+        var beep = new Audio("assets/sounds/Robot_blip-Marianne_Gagnon-120342607.mp3");
+        beep.play();
     } else {
         scoreboard.wrongGuesses += guess.toUpperCase() + "   ";
         scoreboard.guessesLeft--;
+        var error = new Audio("assets/sounds/Computer Error-SoundBible.com-399240903.mp3");
+        error.play();
     }
 }
 
@@ -128,11 +132,12 @@ function checkWinLoss() {
     if (scoreboard.guessesLeft <= 0) {
         scoreboard.lose();
         displayResult(false);
+        playSong(false);
         setTimeout(newRound, waitLength);
     } else if (!scoreboard.currentWord.includes("_")) {
         scoreboard.win();
         displayResult(true);
-        playSong();
+        playSong(true);
         setTimeout(newRound, scoreboard.songLength);
     }
 }
@@ -141,11 +146,10 @@ function checkWinLoss() {
 function displayResult(won) {
     var newDiv = document.createElement("div");
     if (won) {
-        newDiv.innerHTML = "<p>Yay, you won!</p> <img class='img-thumbnail' src=" + wordBank[scoreboard.answerIndex].image +
-            " alt='character-image'>";
+        newDiv.innerHTML = "<h2>You're right, it's " + wordBank[scoreboard.answerIndex].name.toUpperCase() + "!</h2> <img class='img-thumbnail' src=" + wordBank[scoreboard.answerIndex].image + " alt='character-image'>";
         newDiv.setAttribute("class", "alert alert-success fade show");
     } else {
-        newDiv.innerHTML = "Sorry, you lose. Try again!";
+        newDiv.innerHTML = "Sorry, you lose. The answer was " + wordBank[scoreboard.answerIndex].name.toUpperCase() + ". Try again!";
         newDiv.setAttribute("class", "alert alert-danger");
     }
     document.getElementsByClassName("jumbotron")[0].prepend(newDiv);
@@ -158,8 +162,12 @@ function removeAlert() {
 }
 
 //      Play song
-function playSong() {
-    var song = new Audio(wordBank[scoreboard.answerIndex].song);
+function playSong(won) {
+    if (won) {
+        var song = new Audio(wordBank[scoreboard.answerIndex].song);
+    } else {
+        var song = new Audio("assets/sounds/Sad_Trombone-Joe_Lamb-665429450.mp3")
+    }
     song.play();
 }
 

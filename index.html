@@ -11,60 +11,38 @@
 
     <title>Hangman</title>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|UnifrakturMaguntia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|UnifrakturMaguntia" rel="stylesheet">
 </head>
 
 <body>
-
+    <div class="jumbotron jumbotron-fluid">
+        <img id="logo" src="assets/images/castle.png" alt="castle image">
+        <h1>Disney Hangman</h1>
+        <h4>Guess the character name below!</h4>
+    </div>
     <div class="container">
         <!-- Title Section -->
-        <div class="jumbotron">
-            <div class="container">
-                <h1>hangman</h1>
-                <h2>Guess the name of this Disney character!</h2>
-                <h4>Click any letter to begin...</h4>
-            </div>
-        </div>
+
 
         <!-- Game counters -->
         <div class="row">
             <div class="col-lg-12">
-
                 <!-- Word to Guess -->
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title"><strong>Word to Guess</strong></h3>
-                    </div>
                     <div class="card-body">
+                        <h4 class="card-title" id="instruction-text">Enter letter to guess:</h4>
                         <h3><pre id="word-text">_ _ _ _ _ _ _ _ _ </pre></h3>
                     </div>
                 </div>
 
-                <!-- List of Wrong User Guesses. -->
+                <!-- Game Stats -->
                 <div class="card">
                     <div class="card-body">
-                        <strong>Wrong Guesses: </strong> <span id="wrong-guesses-text"></span>
-                    </div>
-                </div>
-
-                <!-- Number of Guesses Left -->
-                <div class="card">
-                    <div class="card-body">
-                        <strong>Guesses Left: </strong> <span id="guesses-left-text">:)</span>
-                    </div>
-                </div>
-
-                <!-- Number of Wins. -->
-                <div class="card">
-                    <div class="card-body">
-                        <strong>Wins: </strong> <span id="win-counter-text">:)</span>
-                    </div>
-                </div>
-
-                <!-- Number of Losses. -->
-                <div class="card">
-                    <div class="card-body">
-                        <strong>Losses: </strong> <span id="loss-counter-text">:)</span>
+                        <strong>Wrong Guesses: </strong>
+                        <div id="wrong-guesses-text">none</div>
+                        <strong>Guesses Left: </strong> <span id="guesses-left-text">:)</span><br>
+                        <strong>Total Wins: </strong> <span id="win-counter-text">:)</span><br>
+                        <strong>Total Losses: </strong> <span id="loss-counter-text">:)</span>
                     </div>
                 </div>
             </div>
