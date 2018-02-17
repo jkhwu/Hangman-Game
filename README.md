@@ -1,6 +1,6 @@
 # Hangman-Game
 
-I created this game as an exercise in OOP and DOM manipulation.
+I created this game as an exercise in DOM manipulation.
 
 ## How to Play
 
