@@ -31,10 +31,6 @@ const wordBank = [
     // {name: "", song: "assets/sounds/"},
 ]
 
-const validGuesses = [
-    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
-]
-
 const waitLength = 4000;
 
 // ---------------------------------------------------
@@ -47,6 +43,7 @@ function newRound() {
     scoreboard.currentWord = writeBlanks(scoreboard.answerWord);
     scoreboard.wrongGuesses = "";
     scoreboard.guessesLeft = 9;
+    logAnswer(); // for debugging purposes
     updatePage();
 }
 
@@ -66,6 +63,21 @@ function writeBlanks(word) {
     return blanks;
 }
 
+//      Logs answer to console for debugging
+function logAnswer() {
+    console.log("-------------------------------");
+    console.log("Answer: " + scoreboard.answerWord);
+    console.log("-------------------------------");
+}
+
+// Check if user input is a valid guess
+function valid(key) {
+    if (!/^[a-z]$/.test(key)) return false; // checks if key is a letter
+    if (scoreboard.wrongGuesses.includes(key.toUpperCase())) return false; // Makes sure key isnt already Guessed
+    if (scoreboard.currentWord.includes(key.toUpperCase())) return false; // Makes sure correct keys cant be pressed again
+    return true;
+}
+
 // Take guess and modify scoreboard
 function processGuess(guess) {
     var answer = scoreboard.answerWord;
@@ -75,7 +87,7 @@ function processGuess(guess) {
         var beep = new Audio("assets/sounds/Robot_blip-Marianne_Gagnon-120342607.mp3");
         beep.play();
     } else {
-        scoreboard.wrongGuesses += guess.toUpperCase() + "   ";
+        scoreboard.wrongGuesses += guess.toUpperCase() + " ";
         scoreboard.guessesLeft--;
         var error = new Audio("assets/sounds/Computer Error-SoundBible.com-399240903.mp3");
         error.play();
@@ -112,20 +124,10 @@ function updatePage() {
     document.querySelector("#guesses-left-text").innerHTML = scoreboard.guessesLeft;
     document.querySelector("#win-counter-text").innerHTML = scoreboard.wins;
     document.querySelector("#loss-counter-text").innerHTML = scoreboard.losses;
-    removeAlert()
-    logScoreboard(); // test
+    removeAlert();
 }
 
-//      Log the current game stats to console
-function logScoreboard() {
-    console.log("----- CURRENT GAME ------")
-    for (var i in scoreboard) {
-        if (typeof scoreboard[i] != "function") {
-            console.log(i + ": " + scoreboard[i])
-        }
-    }
-    console.log("-------------------------")
-}
+
 
 // Check whether game has entered win or loss condition
 function checkWinLoss() {
@@ -146,13 +148,13 @@ function checkWinLoss() {
 function displayResult(won) {
     var newDiv = document.createElement("div");
     if (won) {
-        newDiv.innerHTML = "<h2>You're right, it's " + wordBank[scoreboard.answerIndex].name.toUpperCase() + "!</h2> <img class='img-thumbnail' src=" + wordBank[scoreboard.answerIndex].image + " alt='character-image'>";
-        newDiv.setAttribute("class", "alert alert-success fade show");
+        newDiv.innerHTML = "<h2>You're right, it's " + wordBank[scoreboard.answerIndex].name.toUpperCase() + "!</h2> <img class='rounded' src=" + wordBank[scoreboard.answerIndex].image + " alt='character-image'>";
+        newDiv.setAttribute("class", "alert alert-success");
     } else {
-        newDiv.innerHTML = "Sorry, you lose. The answer was " + wordBank[scoreboard.answerIndex].name.toUpperCase() + ". Try again!";
+        newDiv.innerHTML = "Sorry, the answer was " + wordBank[scoreboard.answerIndex].name.toUpperCase() + ". Try again!";
         newDiv.setAttribute("class", "alert alert-danger");
     }
-    document.getElementsByClassName("jumbotron")[0].prepend(newDiv);
+    document.getElementsByClassName("jumbotron")[0].appendChild(newDiv);
 }
 
 //      Remove existing alert
@@ -197,17 +199,9 @@ newRound();
 document.addEventListener("keyup", function(event) {
     var userGuess = event.key.toLowerCase();
     console.log("Key Pressed: " + userGuess);
-    if (validGuesses.includes(userGuess)) {
+    if (valid(userGuess)) {
         processGuess(userGuess);
         updatePage();
         checkWinLoss();
     }
 })
-
-
-
-// ---------------------------------------------------
-// ADD THESE LATER
-// ---------------------------------------------------
-// Songs
-// Names with spaces

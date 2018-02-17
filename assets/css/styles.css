@@ -23,7 +23,8 @@ body {
 
 .jumbotron {
     text-align: center;
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 0;
 }
 
 #logo {
@@ -40,6 +41,11 @@ h1 {
     line-height: .5em;
     margin-top: .3em;
     margin-bottom: .3em;
+}
+
+h2 {
+    font-size: 16px;
+    padding-bottom: 15px;
 }
 
 h3 {
