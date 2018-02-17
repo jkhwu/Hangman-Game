@@ -1,6 +1,6 @@
 # Hangman-Game
 
-This game was created as an exercise in functional programming in Javascript.
+This game was created as an exercise in functional programming and DOM manipulation.
 
 ## How to Play
 
