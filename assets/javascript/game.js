@@ -2,34 +2,33 @@
 // GLOBAL CONSTANTS & VARIABLES
 // ---------------------------------------------------
 const wordBank = [
-    // { name: "aladdin", song: "assets/sounds/Aladdin-05-OneJumpAhead-Reprise.wav", duration: 6000, image: "assets/images/aladdin.png" },
-    // { name: "alice", song: "assets/sounds/ClassicDisneyVol5-19-InAWorldOfMyOwn.wav", duration: 8000, image: "assets/images/alice.png" },
-    // { name: "ariel", song: "assets/sounds/ClassicDisneyVol2-03-PartOfYourWorld.wav", duration: 5000, image: "assets/images/ariel.png" },
-    // { name: "sleeping beauty", song: "assets/sounds/ClassicDisneyVol3-17-OnceUponADream.wav", duration: 8000, image: "assets/images/aurora.png" }
-    // { name: "baloo", song: "assets/sounds/ClassicDisneyVol2-11-TheBareNecessities.wav", duration: 5000, image: "assets/images/baloo.png" },
-    // { name: "bambi", song: "assets/sounds/ClassicDisneyVol3-24-LittleAprilShower.wav", duration: 5000, image: "assets/images/bambi.png" },
-    // { name: "belle", song: "assets/sounds/ClassicDisneyVol2-06-SomethingThere.wav", duration: 8000, image: "assets/images/belle.png" },
-    // { name: "bert", song: "assets/sounds/ClassicDisneyVol1-09-ChimChimCheree.wav", duration: 7000, image: "assets/images/bert.png" },
-    // { name: "cinderella", song: "assets/sounds/ClassicDisneyVol1-20-ADreamIsAWishYourHeartMake.wav", duration: 8000, image: "assets/images/cinderella.png" },
-    // { name: "cruella", song: "assets/sounds/ClassicDisneyVol5-08-CruellaDeVil.wav", duration: 9000, image: "assets/images/cruella.png" },
-    // { name: "dumbo", song: "assets/sounds/ClassicDisneyVol5-24-WhenISeeAnElephantFly.wav", duration: 7000, image: "assets/images/dumbo.png" },
-    // { name: "esmeralda", song: "assets/sounds/ClassicDisneyVol5-03-GodHelpTheOutcasts.wav", duration: 7000, image: "assets/images/esmeralda.png" },
-    // { name: "gaston", song: "assets/sounds/ClassicDisneyVol2-05-Gaston.wav", duration: 5000, image: "assets/images/gaston.png" },
-    // { name: "jafar", song: "assets/sounds/Aladdin-11-PrinceAli-Reprise.wav", duration: 5000, image: "assets/images/jafar.png" },
-    // { name: "jasmine", song: "assets/sounds/Aladdin-09-AWholeNewWorld.wav", duration: 7000, image: "assets/images/jasmine.png" },
-    // { name: "lumiere", song: "assets/sounds/ClassicDisneyVol2-01-BeOurGuest.wav", duration: 7000, image: "assets/images/lumiere.png" },
-    // { name: "mulan", song: "assets/sounds/Mulan-02-Reflection.wav", duration: 10000, image: "assets/images/mulan.png" },
-    { name: "mary poppins", song: "assets/sounds/ClassicDisneyVol2-07-Supercalifragilisticexpialidocious.wav", duration: 3000, image: "assets/images/mary.png" },
-    // { name: "pocahontas", song: "assets/sounds/ClassicDisneyVol3-01-ColorsOfTheWind.wav", duration: 8000, image: "assets/images/pocahontas.png" },
-    // { name: "pinocchio", song: "assets/sounds/ClassicDisneyVol5-25-IveGotNoStrings.wav", duration: 5000, image: "assets/images/pinocchio.png" },
-    // { name: "scar", song: "assets/sounds/ClassicDisneyVol3-03-BePrepared.wav", duration: 3000, image: "assets/images/scar.png" },
-    // { name: "sebastian", song: "assets/sounds/ClassicDisneyVol1-04-UnderTheSea.wav", duration: 9000, image: "assets/images/sebastian.png" },
-    // { name: "tarzan", song: "assets/sounds/Tarzan-03-SonofMan.wav", duration: 7000, image: "assets/images/tarzan.png" },
-    // { name: "timon", song: "assets/sounds/ClassicDisneyVol1-05-HakunaMatata.wav", duration: 6000, image: "assets/images/timon.png" },
-    // { name: "quasimodo", song: "assets/sounds/ClassicDisneyVol3-04-OutThere.wav", duration: 6000, image: "assets/images/quasi.png" },
-    // { name: "woody", song: "assets/sounds/ClassicDisneyVol3-02-YouveGotAFriendInMe.wav", duration: 4000, image: "assets/images/woody.png" },
-    // { name: "ursula", song: "assets/sounds/ClassicDisneyVol1-08-PoorUnfortunateSouls.wav", duration: 7000, image: "assets/images/ursula.png" }
-    // { name: "", song: "assets/sounds/", duration: 6000, image: "assets/images/"},
+    { name: "aladdin", song: "assets/sounds/Aladdin-05-OneJumpAhead-Reprise.wav", duration: 6000, image: "assets/images/aladdin.png" },
+    { name: "alice", song: "assets/sounds/ClassicDisneyVol5-19-InAWorldOfMyOwn.wav", duration: 8000, image: "assets/images/alice.png" },
+    { name: "ariel", song: "assets/sounds/ClassicDisneyVol2-03-PartOfYourWorld.wav", duration: 5000, image: "assets/images/ariel.png" },
+    { name: "aurora", song: "assets/sounds/ClassicDisneyVol3-17-OnceUponADream.wav", duration: 8000, image: "assets/images/aurora.png" },
+    { name: "baloo", song: "assets/sounds/ClassicDisneyVol2-11-TheBareNecessities.wav", duration: 5000, image: "assets/images/baloo.png" },
+    { name: "bambi", song: "assets/sounds/ClassicDisneyVol3-24-LittleAprilShower.wav", duration: 5000, image: "assets/images/bambi.png" },
+    { name: "belle", song: "assets/sounds/ClassicDisneyVol2-06-SomethingThere.wav", duration: 8000, image: "assets/images/belle.png" },
+    { name: "bert", song: "assets/sounds/ClassicDisneyVol1-09-ChimChimCheree.wav", duration: 7000, image: "assets/images/bert.png" },
+    { name: "cinderella", song: "assets/sounds/ClassicDisneyVol1-20-ADreamIsAWishYourHeartMake.wav", duration: 8000, image: "assets/images/cinderella.png" },
+    { name: "cruella", song: "assets/sounds/ClassicDisneyVol5-08-CruellaDeVil.wav", duration: 9000, image: "assets/images/cruella.png" },
+    { name: "dumbo", song: "assets/sounds/ClassicDisneyVol5-24-WhenISeeAnElephantFly.wav", duration: 7000, image: "assets/images/dumbo.png" },
+    { name: "esmeralda", song: "assets/sounds/ClassicDisneyVol5-03-GodHelpTheOutcasts.wav", duration: 7000, image: "assets/images/esmeralda.png" },
+    { name: "gaston", song: "assets/sounds/ClassicDisneyVol2-05-Gaston.wav", duration: 5000, image: "assets/images/gaston.png" },
+    { name: "jafar", song: "assets/sounds/Aladdin-11-PrinceAli-Reprise.wav", duration: 5000, image: "assets/images/jafar.png" },
+    { name: "jasmine", song: "assets/sounds/Aladdin-09-AWholeNewWorld.wav", duration: 7000, image: "assets/images/jasmine.png" },
+    { name: "lumiere", song: "assets/sounds/ClassicDisneyVol2-01-BeOurGuest.wav", duration: 7000, image: "assets/images/lumiere.png" },
+    { name: "mulan", song: "assets/sounds/Mulan-02-Reflection.wav", duration: 10000, image: "assets/images/mulan.png" },
+    { name: "pocahontas", song: "assets/sounds/ClassicDisneyVol3-01-ColorsOfTheWind.wav", duration: 8000, image: "assets/images/pocahontas.png" },
+    { name: "pinocchio", song: "assets/sounds/ClassicDisneyVol5-25-IveGotNoStrings.wav", duration: 5000, image: "assets/images/pinocchio.png" },
+    { name: "scar", song: "assets/sounds/ClassicDisneyVol3-03-BePrepared.wav", duration: 3000, image: "assets/images/scar.png" },
+    { name: "sebastian", song: "assets/sounds/ClassicDisneyVol1-04-UnderTheSea.wav", duration: 9000, image: "assets/images/sebastian.png" },
+    { name: "tarzan", song: "assets/sounds/Tarzan-03-SonofMan.wav", duration: 7000, image: "assets/images/tarzan.png" },
+    { name: "timon", song: "assets/sounds/ClassicDisneyVol1-05-HakunaMatata.wav", duration: 6000, image: "assets/images/timon.png" },
+    { name: "quasimodo", song: "assets/sounds/ClassicDisneyVol3-04-OutThere.wav", duration: 6000, image: "assets/images/quasi.png" },
+    { name: "woody", song: "assets/sounds/ClassicDisneyVol3-02-YouveGotAFriendInMe.wav", duration: 4000, image: "assets/images/woody.png" },
+    { name: "ursula", song: "assets/sounds/ClassicDisneyVol1-08-PoorUnfortunateSouls.wav", duration: 7000, image: "assets/images/ursula.png" }
+    // {name: "", song: "assets/sounds/"},
 ]
 
 const validGuesses = [
@@ -62,17 +61,10 @@ function pickNewWord() {
 function writeBlanks(word) {
     var blanks = ""
     for (var i = 0; i < word.length; i++) {
-        if (word[i] === " ") {
-            blanks += "   ";
-        } else {
-            blanks += "__ ";
-        }
+        blanks += "__ ";
     }
     return blanks;
 }
-
-// Checks guess
-function checkGuess()
 
 // Take guess and modify scoreboard
 function processGuess(guess) {
@@ -197,7 +189,7 @@ newRound();
 document.addEventListener("keyup", function(event) {
     var userGuess = event.key.toLowerCase();
     console.log("Key Pressed: " + userGuess);
-    if (checkGuess) {
+    if (validGuesses.includes(userGuess)) {
         processGuess(userGuess);
         updatePage();
         checkWinLoss();
@@ -209,4 +201,5 @@ document.addEventListener("keyup", function(event) {
 // ---------------------------------------------------
 // ADD THESE LATER
 // ---------------------------------------------------
+// Songs
 // Names with spaces
