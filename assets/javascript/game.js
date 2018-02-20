@@ -33,6 +33,8 @@ const wordBank = [
 
 const waitLength = 4000;
 
+var areKeysLocked = false;
+
 // ---------------------------------------------------
 // FUNCTIONS
 // ---------------------------------------------------
@@ -43,6 +45,7 @@ function newRound() {
     scoreboard.currentWord = writeBlanks(scoreboard.answerWord);
     scoreboard.wrongGuesses = "";
     scoreboard.guessesLeft = 9;
+    areKeysLocked = false;
     logAnswer(); // for debugging purposes
     updatePage();
 }
@@ -75,6 +78,7 @@ function valid(key) {
     if (!/^[a-z]$/.test(key)) return false; // checks if key is a letter
     if (scoreboard.wrongGuesses.includes(key.toUpperCase())) return false; // Makes sure key isnt already Guessed
     if (scoreboard.currentWord.includes(key.toUpperCase())) return false; // Makes sure correct keys cant be pressed again
+    if (areKeysLocked) return false;
     return true;
 }
 
@@ -133,6 +137,7 @@ function updatePage() {
 function checkWinLoss() {
     if (scoreboard.guessesLeft <= 0) {
         scoreboard.lose();
+        areKeysLocked = true;
         displayResult(false);
         playSong(false);
         setTimeout(newRound, waitLength);
@@ -140,6 +145,7 @@ function checkWinLoss() {
         scoreboard.win();
         displayResult(true);
         playSong(true);
+        areKeysLocked = true;
         setTimeout(newRound, scoreboard.songLength);
     }
 }
