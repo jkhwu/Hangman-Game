@@ -14,6 +14,10 @@ Gameplay is intuitive for those who have played Hangman before. For those who ha
 - If you get down to 0 guesses left, you lose the round and can try again.
 - If you guess all the letters correctly, you win the round.
 - The game automatically resets but keeps track of your wins and losses.
+- Cheat: open console to view answers.
+
+## Responsiveness
+- This game cannot be played on mobile devices yet.
 
 ## Access
 
