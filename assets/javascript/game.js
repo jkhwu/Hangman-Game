@@ -68,9 +68,7 @@ function writeBlanks(word) {
 
 //      Logs answer to console for debugging
 function logAnswer() {
-    console.log("-------------------------------");
     console.log("Answer: " + scoreboard.answerWord);
-    console.log("-------------------------------");
 }
 
 // Check if user input is a valid guess
@@ -204,7 +202,7 @@ var scoreboard = {
 newRound();
 document.addEventListener("keyup", function(event) {
     var userGuess = event.key.toLowerCase();
-    console.log("Key Pressed: " + userGuess);
+    // console.log("Key Pressed: " + userGuess);
     if (valid(userGuess)) {
         processGuess(userGuess);
         updatePage();
